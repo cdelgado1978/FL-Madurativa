@@ -1,0 +1,301 @@
+﻿@model madurativas.db.mchat
+<div class="modal-content">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+       
+        <table class="col-md-12">
+
+            <tr>
+                <td class="col-md-6">
+
+                    <h4 class="modal-title">
+                        ¿Cuando le sonríe a @Model.estudio.Paciente.nombre, ¿le devuelve la sonrisa?
+                    </h4>
+                </td>
+                <td class="col-md-6">
+                    <h4 style="color: red; float: right;"><strong>No es una prueba diagnóstica</strong></h4>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="modal-body" id="bodyLenguaje">
+        <div class="row">
+            <div class="col-md-6">
+                @using (@Html.BeginForm("SaveDetailQuest11", null, FormMethod.Post, new { id = "FrmQuest11" }))
+                {
+                    @Html.AntiForgeryToken()
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-md-8">
+                            11. Cuando le sonríe a su hijo o hija, ¿ @Model.estudio.Paciente.nombre le devuelve la sonrisa?
+                        </label>
+                        <div class="col-md-4">
+                            <div class="checkbox">
+                                @Html.CheckBox("quest_1", Convert.ToBoolean(Model.mchat_monitor_quest_11.quest1), new { @class = "form-control switch", @data_on_text = "Si", @data_off_text = "No" })
+                                @Html.ValidationMessageFor(model => model.mchat_monitor_quest_11.quest1, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div id="cuestionario" style="display:none">
+                        <div class="form-group" id="Observacion" style="display: none;">
+                            <label class="control-label col-md-12">
+                                ¿Qué hace sonreír a @Model.estudio.Paciente.nombre?  (Si el padre/madre no da un ejemplo de PASA o FALLA de los que están debajo, pregunte cada uno individualmente)
+                            </label>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <label class="control-label col-md-12" id="dt5_lblEjemploPasa">
+                                @string.Format("{0}… ejemplos de PASA", @Model.estudio.Paciente.nombre.Trim()).Trim()
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-8">
+                                ¿Sonríe cuando Ud. le sonríe?
+                            </label>
+                            <div class="col-md-4">
+                                <div class="checkbox">
+                                    @Html.CheckBox("quest_2", Convert.ToBoolean(Model.mchat_monitor_quest_11.quest2), new { @class = "form-control switch", @data_on_text = "Si", @data_off_text = "No" })
+                                    @Html.ValidationMessageFor(model => model.mchat_monitor_quest_11.quest2, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-8">
+                                ¿Sonríe cuando Ud. entra a la habitación?
+                            </label>
+                            <div class="col-md-4">
+                                <div class="checkbox">
+                                    @Html.CheckBox("quest_3", Convert.ToBoolean(Model.mchat_monitor_quest_11.quest3), new { @class = "form-control switch", @data_on_text = "Si", @data_off_text = "No" })
+                                    @Html.ValidationMessageFor(model => model.mchat_monitor_quest_11.quest3, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-8">
+                                ¿Sonríe cuando Ud. vuelve a su casa?
+                            </label>
+                            <div class="col-md-4">
+                                <div class="checkbox">
+                                    @Html.CheckBox("quest_4", Convert.ToBoolean(Model.mchat_monitor_quest_11.quest4), new { @class = "form-control switch", @data_on_text = "Si", @data_off_text = "No" })
+                                    @Html.ValidationMessageFor(model => model.mchat_monitor_quest_11.quest4, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <label class="control-label col-md-12" id="dt5_lblEjemploPasa">
+                                @string.Format("Alguna vez {0}… ejemplos de FALLA", @Model.estudio.Paciente.nombre.Trim()).Trim()
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-8">
+                                ¿Está siempre sonriendo?
+                            </label>
+                            <div class="col-md-4">
+                                <div class="checkbox">
+                                    @Html.CheckBox("quest_5", Convert.ToBoolean(Model.mchat_monitor_quest_11.quest5), new { @class = "form-control switch", @data_on_text = "Si", @data_off_text = "No" })
+                                    @Html.ValidationMessageFor(model => model.mchat_monitor_quest_11.quest5, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-8">
+                                ¿Sonríe en relación a un juguete o actividad favorita?
+                            </label>
+                            <div class="col-md-4">
+                                <div class="checkbox">
+                                    @Html.CheckBox("quest_6", Convert.ToBoolean(Model.mchat_monitor_quest_11.quest6), new { @class = "form-control switch", @data_on_text = "Si", @data_off_text = "No" })
+                                    @Html.ValidationMessageFor(model => model.mchat_monitor_quest_11.quest6, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-8">
+                                ¿Sonríe al azar o por nada en particular?
+                            </label>
+                            <div class="col-md-4">
+                                <div class="checkbox">
+                                    @Html.CheckBox("quest_7", Convert.ToBoolean(Model.mchat_monitor_quest_11.quest7), new { @class = "form-control switch", @data_on_text = "Si", @data_off_text = "No" })
+                                    @Html.ValidationMessageFor(model => model.mchat_monitor_quest_11.quest7, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="form-group">
+                        <label class="control-label col-md-8" id="labelResultado">
+                            Resultado de la Prueba:
+                        </label>
+                        <div class="col-md-4">
+                            <label class="control-label col-md-8" id="lblResultado">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="dt11ObservacionResultado">
+                        <label class="control-label col-md-12">
+                            * Para el caso de @Model.estudio.Paciente.nombre el resultado para este aspecto se evalúa en base a lo que hace más frecuentemente (para el caso de de igualdad en el número de respuestas PASA - FALLA se evalúa como FALLA)
+                        </label>
+                    </div>
+
+                    <div class="form-group" id="divAtencion">
+                        <label class="control-label col-md-12" style="color:red;">
+                            ATENCIÓN: No hay respuestas PASA - FALLA que predominen
+                        </label>
+                    </div>
+
+                    
+
+                </div>
+                }
+            </div>
+            <div class="col-md-6">
+                <img src="@Url.Content("~/Content/images/quest11.png")" alt="img_quest11" />
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="form-group">
+            <div class="col-md-12">
+                <button id="btndtq11Save" type="submit" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+
+        var $dt11_quest1 = $('#FrmQuest11 #quest_1');
+        var $dt11_quest2 = $('#FrmQuest11 #quest_2');
+        var $dt11_quest3 = $('#FrmQuest11 #quest_3');
+        var $dt11_quest4 = $('#FrmQuest11 #quest_4');
+        var $dt11_quest5 = $('#FrmQuest11 #quest_5');
+        var $dt11_quest6 = $('#FrmQuest11 #quest_6');
+        var $dt11_quest7 = $('#FrmQuest11 #quest_7');
+        var $dt11_Observacion = $('#FrmQuest11 #Observacion');
+        var $dt11_Resultado = $('#FrmQuest11 #lblResultado');
+        var $dt11_cuestionario = $('#FrmQuest11 #cuestionario');
+        var $dt11_labelResultado = $('#FrmQuest11 #labelResultado');
+        var $dt11_divAtencion = $('#FrmQuest11 #divAtencion');
+                     
+        function validaResultado() {
+
+            if ($dt11_quest1.is(':checked')) {
+                Resultado("Pasa");
+                $dt11_divAtencion.show();
+
+            } else {
+                $dt11_divAtencion.hide();
+                if (SoloSiEnPasa() == 3) {
+                    Resultado("Pasa");
+                } else {
+                    Resultado("Falla");
+                    $dt11_labelResultado.empty();
+                    $dt11_labelResultado.append("Resultado de la prueba:*");
+                }
+
+                if (SoloSiEnFallas() == 3) {
+                    Resultado("Falla");
+                } else {
+                    Resultado("Pasa");
+                    $dt11_labelResultado.empty();
+                    $dt11_labelResultado.append("Resultado de la prueba:*");
+                }
+            }
+
+
+        }
+
+        function Resultado(valor) {
+            $dt11_Resultado.empty();
+            $dt11_Resultado.append(valor);
+        }
+
+
+        function muestraCampos() {
+            if ($dt11_quest1.is(':checked')) {
+                $dt11_Observacion.hide();
+                $dt11_cuestionario.hide();
+            } else {
+                $dt11_Observacion.show();
+                $dt11_cuestionario.show();
+            }
+
+            
+            validaResultado();
+        }
+
+        muestraCampos();
+
+
+        $('div.bootstrap-switch-container > span').click(function () {
+
+            muestraCampos();
+
+
+        });
+
+        function SoloSiEnPasa() {
+            var nPasa = 0;
+
+            if ($dt11_quest2.is(':checked')) nPasa++;
+            if ($dt11_quest3.is(':checked')) nPasa++;
+            if ($dt11_quest4.is(':checked')) nPasa++;
+
+            return nPasa;
+
+        }
+
+        function SoloSiEnFallas() {
+            var nfallas = 0;
+     
+            if ($dt11_quest5.is(':checked')) nfallas++;
+            if ($dt11_quest6.is(':checked')) nfallas++;
+            if ($dt11_quest7.is(':checked')) nfallas++;
+
+            return nfallas;
+
+        }
+
+        $("#btndtq11Save").click(function (e) {
+
+            e.preventDefault();
+
+            var form = $("#FrmQuest11");
+
+            var _pasa;
+            if ($dt11_Resultado.text().toLowerCase() == "pasa") {
+                _pasa = true;
+            } else { _pasa = false; } 
+
+            var q11datos = {
+                estudioId: $("#estudio_id").val(),
+                quest1: $dt11_quest1.is(":checked"),
+                quest2: $dt11_quest2.is(":checked"),
+                quest3: $dt11_quest3.is(":checked"),
+                quest4: $dt11_quest4.is(":checked"),
+                quest5: $dt11_quest5.is(":checked"),
+                quest6: $dt11_quest6.is(":checked"),
+                quest7: $dt11_quest7.is(":checked"),
+                pasa: _pasa
+            };
+
+            $.ajax({
+                url: form.attr("action"),
+                method: form.attr("method"),
+                data: q11datos
+            });
+
+        });
+
+    });
+</script>

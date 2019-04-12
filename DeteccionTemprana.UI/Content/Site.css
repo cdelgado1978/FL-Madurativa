@@ -1,0 +1,86 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+/*#panelVigilancia button {
+    width: 10em;
+}*/
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    font-size: 1.2em;
+    
+    text-align: center;
+}
+
+.AutisBackground {
+    background: #374248;
+    border-color: #374248;
+    color: white !important
+}
+
+.AutisBackground a{
+    color: white !important;
+}
+
+.menu a:hover {
+    color: #fff !important;
+    background: #006687 !important;
+    border-color: #006687 !important;
+}
+
+
+.modal-header {
+    background-color: #374248 !important;
+    color: white !important;
+}
+
+.orangeButton {
+    background-color: #df691a;
+    margin: 1px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 16px;
+    padding-left: 16px;
+    font-size: 13px;
+    text-align: center;
+    border: none;
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
+}
+
+    .orangeButton a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .orangeButton:hover {
+        background-color: #DF7F00;
+    }

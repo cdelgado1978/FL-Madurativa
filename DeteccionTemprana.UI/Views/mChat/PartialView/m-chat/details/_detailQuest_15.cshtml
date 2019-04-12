@@ -1,0 +1,289 @@
+﻿@model madurativas.db.mchat
+<div class="modal-content">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+       
+        <table class="col-md-12">
+
+            <tr>
+                <td class="col-md-6">
+                    <h4 class="modal-title">
+                        ¿@Model.estudio.Paciente.nombre trata de copiar lo que Ud. hace?
+
+                    </h4>
+                </td>
+                <td class="col-md-6">
+                    <h4 style="color: red; float: right;"><strong>No es una prueba diagnóstica</strong></h4>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="modal-body" id="bodyLenguaje">
+
+        <div class="row">
+            <div class="col-md-6">
+                @using (@Html.BeginForm("SaveDetailQuest15", null, FormMethod.Post, new { id = "FrmQuest15" }))
+                {
+                    @Html.AntiForgeryToken()
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-md-8">
+                            15. ¿@Model.estudio.Paciente.nombre trata de copiar lo que Ud. hace?
+                        </label>
+                        <div class="col-md-4">
+                            <div class="checkbox">
+                                @Html.CheckBox("quest_1", Convert.ToBoolean(Model.mchat_monitor_quest_15.quest1), new { @class = "form-control switch", @data_on_text = "Si", @data_off_text = "No" })
+                                @Html.ValidationMessageFor(model => model.mchat_monitor_quest_15.quest1, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" style="display:none; font-weight: bold; " id="divObservacion">
+                        <label class="control-label col-md-12">
+                            Cuando la situación no le da ninguna pista, ¿puede seguir una orden? Por ejemplo…(pregunte hasta obtener un sí o use todos los ejemplos)
+                        </label>
+                    </div>
+                   
+                    <hr />
+                    <div class="form-group">
+                        <label class="control-label col-md-8">
+                            ¿Saca la lengua?
+                        </label>
+                        <div class="col-md-4">
+                            <div class="checkbox">
+                                @Html.CheckBox("quest_2", Convert.ToBoolean(Model.mchat_monitor_quest_15.quest2), new { @class = "form-control switch", @data_on_text = "Si", @data_off_text = "No" })
+                                @Html.ValidationMessageFor(model => model.mchat_monitor_quest_15.quest2, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-8">
+                            ¿Hace un ruido gracioso?
+                        </label>
+                        <div class="col-md-4">
+                            <div class="checkbox">
+                                @Html.CheckBox("quest_3", Convert.ToBoolean(Model.mchat_monitor_quest_15.quest3), new { @class = "form-control switch", @data_on_text = "Si", @data_off_text = "No" })
+                                @Html.ValidationMessageFor(model => model.mchat_monitor_quest_15.quest3, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-8">
+                            ¿Dice adiós con la mano?
+                        </label>
+                        <div class="col-md-4">
+                            <div class="checkbox">
+                                @Html.CheckBox("quest_4", Convert.ToBoolean(Model.mchat_monitor_quest_15.quest4), new { @class = "form-control switch", @data_on_text = "Si", @data_off_text = "No" })
+                                @Html.ValidationMessageFor(model => model.mchat_monitor_quest_15.quest4, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-8">
+                            ¿Aplaude?
+                        </label>
+                        <div class="col-md-4">
+                            <div class="checkbox">
+                                @Html.CheckBox("quest_5", Convert.ToBoolean(Model.mchat_monitor_quest_15.quest5), new { @class = "form-control switch", @data_on_text = "Si", @data_off_text = "No" })
+                                @Html.ValidationMessageFor(model => model.mchat_monitor_quest_15.quest5, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-8">
+                            ¿Pone un dedo sobre sus labios para decir “shhh”?
+                        </label>
+                        <div class="col-md-4">
+                            <div class="checkbox">
+                                @Html.CheckBox("quest_6", Convert.ToBoolean(Model.mchat_monitor_quest_15.quest6), new { @class = "form-control switch", @data_on_text = "Si", @data_off_text = "No" })
+                                @Html.ValidationMessageFor(model => model.mchat_monitor_quest_15.quest6, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-8">
+                            ¿Tira un beso?
+                        </label>
+                        <div class="col-md-4">
+                            <div class="checkbox">
+                                @Html.CheckBox("quest_7", Convert.ToBoolean(Model.mchat_monitor_quest_15.quest7), new { @class = "form-control switch", @data_on_text = "Si", @data_off_text = "No" })
+                                @Html.ValidationMessageFor(model => model.mchat_monitor_quest_15.quest7, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-8">
+                            Otros
+                        </label>
+                        <div class="col-md-4">
+                            <div class="checkbox">
+                                @Html.CheckBox("quest_8", Convert.ToBoolean(Model.mchat_monitor_quest_15.quest8), new { @class = "form-control switch", @data_on_text = "Si", @data_off_text = "No" })
+                                @Html.ValidationMessageFor(model => model.mchat_monitor_quest_15.quest8, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="divQuest9" style="display:none">
+                        <label class="control-label col-md-8">
+                            Describa
+                        </label>
+                        <div class="col-md-4">
+                            <div class="checkbox">
+                                @Html.CheckBox("quest_9", Convert.ToBoolean(Model.mchat_monitor_quest_15.quest9), new { @class = "form-control switch", @data_on_text = "Si", @data_off_text = "No" })
+                                @Html.ValidationMessageFor(model => model.mchat_monitor_quest_15.quest9, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="form-group">
+                        <label class="control-label col-md-8">
+                            Resultado de la Prueba:
+                        </label>
+                        <div class="col-md-4">
+                            <label class="control-label col-md-8" id="lblResultado">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+            <div class="col-md-6">
+                <img src="@Url.Content("~/Content/images/quest15.png")" alt="img_quest15" />
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="form-group">
+            <div class="col-md-12">
+                <button id="btndtq15Save" type="submit" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+
+        var $dt15_quest1 = $('#FrmQuest15 #quest_1');
+        var $dt15_quest2 = $('#FrmQuest15 #quest_2');
+        var $dt15_quest3 = $('#FrmQuest15 #quest_3');
+        var $dt15_quest4 = $('#FrmQuest15 #quest_4');
+        var $dt15_quest5 = $('#FrmQuest15 #quest_5');
+        var $dt15_quest6 = $('#FrmQuest15 #quest_6');
+        var $dt15_quest7 = $('#FrmQuest15 #quest_7');
+        var $dt15_quest8 = $('#FrmQuest15 #quest_8');
+        var $dt15_quest9 = $('#FrmQuest15 #quest_9');
+
+
+        var $dt15_Resultado = $('#FrmQuest15 #lblResultado');
+        var $div_observacion = $('#FrmQuest15 #divObservacion');
+        var $divQuest9 = $('#FrmQuest15 #divQuest9');
+
+        function validaResultado() {
+
+            if (CuestionarioCuentaRespuestaSI() >= 2) {
+                Resultado("Pasa");
+            } else {
+                Resultado("Falla");
+            }
+
+
+        }
+
+        function CuestionarioCuentaRespuestaSI() {
+
+            var nPasa = 0;
+
+            if ($dt15_quest2.is(':checked')) nPasa++;
+            if ($dt15_quest3.is(':checked')) nPasa++;
+            if ($dt15_quest4.is(':checked')) nPasa++;
+            if ($dt15_quest5.is(':checked')) nPasa++;
+            if ($dt15_quest6.is(':checked')) nPasa++;
+            if ($dt15_quest7.is(':checked')) nPasa++;
+            if ($dt15_quest8.is(':checked')) nPasa++;
+            
+            return nPasa;
+
+        }
+
+        function Resultado(valor) {
+            $dt15_Resultado.empty();
+            $dt15_Resultado.append(valor);
+        }
+
+
+        function muestraCampos() {
+            if ($dt15_quest1.is(':checked')) {
+                $div_observacion.show();
+
+              
+            } else {
+
+                $div_observacion.hide();
+                
+            }
+
+            if ($dt15_quest8.is(':checked')) {
+                $divQuest9.show();
+            } else {
+                $divQuest9.hide();
+            }
+
+            validaResultado();
+        }
+
+        muestraCampos();
+
+
+        $('div.bootstrap-switch-container > span').click(function () {
+
+            muestraCampos();
+
+
+        });
+
+
+        $("#btndtq15Save").click(function (e) {
+
+            e.preventDefault();
+
+            var form = $("#FrmQuest15");
+
+
+            var _pasa;
+            if ($dt15_Resultado.text().toLowerCase() == "pasa") {
+                _pasa = true;
+            } else { _pasa = false; } 
+
+            var q15datos = {
+                estudioId: $("#estudio_id").val(),
+                quest1: $dt15_quest1.is(":checked"),
+                quest2: $dt15_quest2.is(":checked"),
+                quest3: $dt15_quest3.is(":checked"),
+                quest4: $dt15_quest4.is(":checked"),
+                quest5: $dt15_quest5.is(":checked"),
+                quest6: $dt15_quest6.is(":checked"),
+                quest7: $dt15_quest7.is(":checked"),
+                quest8: $dt15_quest8.is(":checked"),
+                quest9: $dt15_quest9.val(),
+                pasa: _pasa
+            };
+
+            $.ajax({
+                url: form.attr("action"),
+                method: form.attr("method"),
+                data: q15datos
+            });
+
+        });
+
+    });
+</script>

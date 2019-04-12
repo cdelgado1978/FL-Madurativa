@@ -1,0 +1,308 @@
+﻿@model madurativas.db.mchat
+<div class="modal-content">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        
+        <table class="col-md-12">
+
+            <tr>
+                <td class="col-md-6">
+
+                    <h4 class="modal-title">
+                        ¿@Model.estudio.Paciente.nombre responde cuando lo/la llama por su nombre?
+                    </h4>
+                </td>
+                <td class="col-md-6">
+                    <h4 style="color: red; float: right;"><strong>No es una prueba diagnóstica</strong></h4>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="modal-body" id="bodyLenguaje">
+        <div class="row">
+            <div class="col-md-6">
+              
+                @using (@Html.BeginForm("SaveDetailQuest10", null, FormMethod.Post, new {id = "FrmQuest10"}))
+                {
+                    @Html.AntiForgeryToken()
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class=" col-md-8">
+                            10. ¿@Model.estudio.Paciente.nombre responde cuando lo/la llama por su nombre?
+                        </label>
+                        <div class="col-md-4">
+                            <div class="checkbox">
+                                @Html.CheckBox("quest_1", Convert.ToBoolean(Model.mchat_monitor_quest_10.quest1), new { @class = "form-control switch", @data_on_text = "Si", @data_off_text = "No" })
+                                @Html.ValidationMessageFor(model => model.mchat_monitor_quest_10.quest1, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" style="font-weight: bold">
+                        <label class="control-label col-md-12" id="lblDeEjemplo">
+
+                        </label>
+                    </div>
+                    <hr />
+                    <div class="form-group" style="font-weight: bold">
+                        <label class="control-label col-md-12">
+                            @Model.estudio.Paciente.nombre... ejemplos de PASA.
+                        </label>
+                    </div>
+                    <hr />
+
+                    <div class="form-group">
+                        <label class="control-label col-md-8">
+                            ¿Levanta la cabeza y lo/la mira?
+                        </label>
+                        <div class="col-md-4">
+                            <div class="checkbox">
+                                @Html.CheckBox("quest_2", Convert.ToBoolean(Model.mchat_monitor_quest_10.quest2), new { @class = "form-control switch", @data_on_text = "Si", @data_off_text = "No" })
+                                @Html.ValidationMessageFor(model => model.mchat_monitor_quest_10.quest2, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-8">
+                            ¿Habla o balbucea?
+                        </label>
+                        <div class="col-md-4">
+                            <div class="checkbox">
+                                @Html.CheckBox("quest_3", Convert.ToBoolean(Model.mchat_monitor_quest_10.quest3), new { @class = "form-control switch", @data_on_text = "Si", @data_off_text = "No" })
+                                @Html.ValidationMessageFor(model => model.mchat_monitor_quest_10.quest3, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-8">
+                            ¿Interrumpe lo que está haciendo?
+                        </label>
+                        <div class="col-md-4">
+                            <div class="checkbox">
+                                @Html.CheckBox("quest_4", Convert.ToBoolean(Model.mchat_monitor_quest_10.quest4), new { @class = "form-control switch", @data_on_text = "Si", @data_off_text = "No" })
+                                @Html.ValidationMessageFor(model => model.mchat_monitor_quest_10.quest4, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="form-group" style="font-weight: bold">
+                        <label class="control-label col-md-12">
+                            @Model.estudio.Paciente.nombre... ejemplos de Falla.
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-8">
+                            ¿No responde?
+                        </label>
+                        <div class="col-md-4">
+                            <div class="checkbox">
+                                @Html.CheckBox("quest_5", Convert.ToBoolean(Model.mchat_monitor_quest_10.quest5), new { @class = "form-control switch", @data_on_text = "Si", @data_off_text = "No" })
+                                @Html.ValidationMessageFor(model => model.mchat_monitor_quest_10.quest5, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-8">
+                            ¿Parece escuchar pero lo/la ignora?
+                        </label>
+                        <div class="col-md-4">
+                            <div class="checkbox">
+                                @Html.CheckBox("quest_6", Convert.ToBoolean(Model.mchat_monitor_quest_10.quest6), new { @class = "form-control switch", @data_on_text = "Si", @data_off_text = "No" })
+                                @Html.ValidationMessageFor(model => model.mchat_monitor_quest_10.quest6, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-8">
+                            ¿Responde sólo si el padre/madre está frente a la cara del niño/a?
+                        </label>
+                        <div class="col-md-4">
+                            <div class="checkbox">
+                                @Html.CheckBox("quest_7", Convert.ToBoolean(Model.mchat_monitor_quest_10.quest7), new { @class = "form-control switch", @data_on_text = "Si", @data_off_text = "No" })
+                                @Html.ValidationMessageFor(model => model.mchat_monitor_quest_10.quest7, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-8">
+                            ¿Responde sólo si lo/la tocan
+                        </label>
+                        <div class="col-md-4">
+                            <div class="checkbox">
+                                @Html.CheckBox("quest_8", Convert.ToBoolean(Model.mchat_monitor_quest_10.quest8), new { @class = "form-control switch", @data_on_text = "Si", @data_off_text = "No" })
+                                @Html.ValidationMessageFor(model => model.mchat_monitor_quest_10.quest8, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="form-group">
+                        <label class="control-label col-md-8" id="labelResultado">
+                            Resultado de la Prueba:
+                        </label>
+                        <div class="col-md-4">
+                            <label class="control-label col-md-8" id="lblResultado">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group" id="divObservacionResultado" style="display:none;">
+                        <label class="control-label col-md-12">
+                            * Para el caso de @Model.estudio.Paciente.nombre el resultado para este aspecto se evalúa en base a lo que hace más frecuentemente (para el caso de de igualdad en el número de respuestas PASA - FALLA se evalúa como FALLA)
+                        </label>
+                        
+                    </div>
+                    
+                </div>
+                   
+                }
+            </div>
+            <div class="col-md-6">
+                <img src="@Url.Content("~/Content/images/quest10.png")" alt="img_quest10" />
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="form-group">
+            <div class="col-md-12">
+                <button id="btndtq10Save" type="submit" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+
+        var $dt10_quest1 = $('#FrmQuest10 #quest_1');
+        var $dt10_quest2 = $('#FrmQuest10 #quest_2');
+        var $dt10_quest3 = $('#FrmQuest10 #quest_3');
+        var $dt10_quest4 = $('#FrmQuest10 #quest_4');
+        var $dt10_quest5 = $('#FrmQuest10 #quest_5');
+        var $dt10_quest6 = $('#FrmQuest10 #quest_6');
+        var $dt10_quest7 = $('#FrmQuest10 #quest_7');
+        var $dt10_quest8 = $('#FrmQuest10 #quest_8');
+
+        var $dt10_Resultado = $('#FrmQuest10 #lblResultado');
+        var $lbl_DeEjemplo = $('#FrmQuest10 #lblDeEjemplo');
+        var $labelResultado = $('#FrmQuest10 #labelResultado');
+        var $divObservacionResultado = $('#FrmQuest10 #divObservacionResultado')
+
+        function validaResultado() {
+
+            if (CuentaEjemploPasa() == 3) {
+                Resultado("Pasa");
+            } else if (CuentaEjemploFalla() == 4) {
+                Resultado("Falla");
+            } else {
+                Resultado("Falla");
+            }
+
+            if (CuentaEjemploPasa() != 3 || CuentaEjemploFalla() != 4) {
+                $labelResultado.empty();
+                $labelResultado.append("Resultado de la Prueba:*");
+                $divObservacionResultado.show();
+            } else {
+                $labelResultado.empty();
+                $labelResultado.append("Resultado de la Prueba:");
+                $divObservacionResultado.hide();
+            }
+
+        }
+
+        function Resultado(valor) {
+            $dt10_Resultado.empty();
+            $dt10_Resultado.append(valor);
+        }
+
+
+        function muestraCampos() {
+            $lbl_DeEjemplo.empty();
+            if ($dt10_quest1.is(':checked')) {
+               
+                $lbl_DeEjemplo.append("Por favor, deme un ejemplo de cómo responde cuando lo / la llama por su nombre(Si el padre / madre no da un ejemplo de PASA o FALLA de los que están debajo, pregunte cada uno individualmente");
+              
+            } else {
+            
+                $lbl_DeEjemplo.append("Si su hijo o hija no está haciendo algo divertido o interesante, ¿qué hace cuando lo/la llama por su nombre? (Si el padre/madre no da un ejemplo de PASA o FALLA de los que están debajo, pregunte cada uno individualmente");
+
+            }
+
+          
+            validaResultado();
+        }
+
+        muestraCampos();
+
+
+        $('div.bootstrap-switch-container > span').click(function () {
+
+            muestraCampos();
+
+
+        });
+
+
+        function CuentaEjemploPasa() {
+            var nPasa = 0;
+
+            if ($dt10_quest2.is(':checked')) nPasa++;
+            if ($dt10_quest3.is(':checked')) nPasa++;
+            if ($dt10_quest4.is(':checked')) nPasa++;
+         
+            return nPasa;
+
+        }
+
+
+        function CuentaEjemploFalla() {
+            var nfallas = 0;
+
+            if ($dt10_quest5.is(':checked')) nfallas++;
+            if ($dt10_quest6.is(':checked')) nfallas++;
+            if ($dt10_quest7.is(':checked')) nfallas++;
+            if ($dt10_quest8.is(':checked')) nfallas++;          
+            
+            return nfallas;
+
+        }
+
+        $("#btndtq10Save").click(function (e) {
+
+            e.preventDefault();
+
+            var form = $("#FrmQuest10");
+            var _pasa;
+
+            if ($dt10_Resultado.text().toLowerCase() == "pasa") {
+                _pasa = true;
+            } else { _pasa = false;} 
+
+            var q10datos = {
+                estudioId: $("#estudio_id").val(),
+                quest1: $dt10_quest1.is(":checked"),
+                quest2: $dt10_quest2.is(":checked"),
+                quest3: $dt10_quest3.is(":checked"),
+                quest4: $dt10_quest4.is(":checked"),
+                quest5: $dt10_quest5.is(":checked"),
+                quest6: $dt10_quest6.is(":checked"),
+                quest7: $dt10_quest7.is(":checked"),
+                quest8: $dt10_quest8.is(":checked"),
+                pasa: _pasa
+            };
+
+            $.ajax({
+                url: form.attr("action"),
+                method: form.attr("method"),
+                data: q10datos
+            });
+
+        });
+
+    });
+</script>

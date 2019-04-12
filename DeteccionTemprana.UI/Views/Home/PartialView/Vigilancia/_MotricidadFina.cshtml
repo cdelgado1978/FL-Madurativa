@@ -1,0 +1,88 @@
+﻿@using System.Collections
+@using madurativas.db
+@model Paciente
+
+<div class="modal-content">
+    @{
+        var db = new madurativasEntities();
+        var motriF = db.hitos_motricidad_fina.OrderBy(s => s.motricidad_fina_id);
+        var _Caledad = DateTime.Now.Subtract(Model.fechaNacimiento);
+
+        var _edad = Convert.ToDecimal((_Caledad.TotalDays / 365.25).ToString("F1"));
+
+        string Resultado(decimal min, decimal max)
+        {
+            if (_edad <= min) { return "Aún no se debería presentar"; }
+            return _edad >= max ? "Debería estar presente" : "Puede o no cumplir";
+        }
+
+        string BackgroundColor(decimal min, decimal max)
+        {
+            return (_edad <= min) ? "white" : _edad >= max ? "red" : "green";
+
+        }
+
+        string Color(decimal min, decimal max)
+        {
+            return (_edad <= min) ? "Black" : "White";
+
+        }
+
+    }
+    <div class="modal-header" >
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <table class="col-md-12">
+            <tr>
+                <td class="col-md-6">
+                    <h3 class="modal-title">Motricidad Fina</h3>
+                    <h5><strong>Paciente:</strong> @Model.FullName</h5>
+                    <h5><strong>Edad:</strong> @_edad años.</h5>
+                </td>
+                <td class="col-md-6">
+                    <h4 style="color: red; float: right;"><strong>No es una prueba diagnóstica</strong></h4>
+                </td>
+            </tr>
+        </table>
+      
+    </div>
+
+    <div class="modal-body" id="bodyMotricidadFina">
+
+        <table class="table table-condensed">
+            <thead>
+            <tr>
+                <th>Motricidad Fina</th>
+                <th>Min*</th>
+                <th>Max**</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in motriF)
+            {
+                <tr>
+                    <td>@item.descripcion</td>
+                    <td>@item.min</td>
+                    <td>@item.max</td>
+                    <td style="background:@BackgroundColor(@item.min, @item.max); color:@Color(@item.min, @item.max);">@Resultado(item.min, item.max)</td>
+
+                </tr>
+            }
+
+            </tbody>
+        </table>
+        <hr/>
+        <p> *Mínimo: IC 95 inferior para el Percentilo 25 o 50 publicado</p>
+        <p>**Máximo: IC 95 superior para el Percentilo 90 publicado</p>
+    </div>
+
+
+    <div class="modal-footer">
+        <div class="form-group">
+            <div class="col-md-12">
+                <button id="btnPersonalSocial" type="submit" class="btn btn-primary col-md-2" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+

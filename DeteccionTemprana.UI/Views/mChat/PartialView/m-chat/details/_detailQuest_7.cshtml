@@ -1,0 +1,290 @@
+﻿@using System.Web.UI.WebControls
+@model madurativas.db.mchat
+<div class="modal-content">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      
+        <table class="col-md-12">
+
+            <tr>
+                <td class="col-md-6">
+                    <h4 class="modal-title">
+                        ¿@Model.estudio.Paciente.nombre señala con el dedo cuando quiere mostrarle algo interesante?
+                    </h4>
+                </td>
+                <td class="col-md-6">
+                    <h4 style="color: red; float: right;"><strong>No es una prueba diagnóstica</strong></h4>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="modal-body" id="bodyQuest7">
+        <div class="row">
+            <div class="col-md-6">
+                @using (@Html.BeginForm("SaveDetailQuest7", null, FormMethod.Post, new { id = "FrmQuest7" }))
+                {
+                    @Html.AntiForgeryToken()
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-md-8">
+                            7. ¿ @Model.estudio.Paciente.nombre señala con el dedo sólo cuando quiere mostrarle algo interesante?
+                        </label>
+                        <div class="col-md-4">
+                            <div class="checkbox">
+                                @Html.CheckBox("quest_1", Convert.ToBoolean(Model.mchat_monitor_quest_7.quest1), new { @class = "form-control switch", @data_on_text = "Si", @data_off_text = "No" })
+                                @Html.ValidationMessageFor(model => model.mchat_monitor_quest_7.quest1, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="form-group" id="dt7_Observacion" style="display: none;">
+                        <label class="control-label col-md-12">
+                            Por favor, deme un ejemplo de algo que kakaroto puede llegar a señalar con el dedo para mostrarle (Si el padre/madre no da un ejemplo de PASA de los que están aquí, pregunte cada uno individualmente)
+                        </label>
+                    </div>
+
+
+                    <div class="cuestionario" style="display:none;">
+                        <hr />
+                        <div class="form-group">
+                            <label class="control-label col-md-12">
+                                @string.Format("Alguna vez {0} quiere que Ud. vea algo interesante como...", @Model.estudio.Paciente.nombre.Trim()).Trim()
+                            </label>
+                        </div>
+
+                        <hr />
+                        <div class="form-group">
+                            <label class="control-label col-md-8">
+                                ¿Un avión en el cielo?
+                            </label>
+                            <div class="col-md-4">
+                                <div class="checkbox">
+                                    @Html.CheckBox("quest_2", Convert.ToBoolean(Model.mchat_monitor_quest_7.quest2), new { @class = "form-control switch", @data_on_text = "Si", @data_off_text = "No" })
+                                    @Html.ValidationMessageFor(model => model.mchat_monitor_quest_7.quest2, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-8">
+                                ¿Un camión en la ruta?
+                            </label>
+                            <div class="col-md-4">
+                                <div class="checkbox">
+                                    @Html.CheckBox("quest_3", Convert.ToBoolean(Model.mchat_monitor_quest_7.quest3), new { @class = "form-control switch", @data_on_text = "Si", @data_off_text = "No" })
+                                    @Html.ValidationMessageFor(model => model.mchat_monitor_quest_7.quest3, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-8">
+                                ¿Un insecto en el piso?
+                            </label>
+                            <div class="col-md-4">
+                                <div class="checkbox">
+                                    @Html.CheckBox("quest_4", Convert.ToBoolean(Model.mchat_monitor_quest_7.quest4), new { @class = "form-control switch", @data_on_text = "Si", @data_off_text = "No" })
+                                    @Html.ValidationMessageFor(model => model.mchat_monitor_quest_7.quest4, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="control-label col-md-8">
+                                ¿Un animal en el patio/jardín?
+                            </label>
+                            <div class="col-md-4">
+                                <div class="checkbox">
+                                    @Html.CheckBox("quest_5", Convert.ToBoolean(Model.mchat_monitor_quest_7.quest5), new { @class = "form-control switch", @data_on_text = "Si", @data_off_text = "No" })
+                                    @Html.ValidationMessageFor(model => model.mchat_monitor_quest_7.quest5, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>@*-----   Animal en el patio   -----*@
+                    </div>
+
+                    <div class="form-group" id="divQuest6" style="display:none;">
+                        <label class="control-label col-md-8">
+                            ¿Cómo hace su hijo o hija para dirigir su atención al objeto? ¿Señalaría con su dedo índice?
+                        </label>
+                        <div class="col-md-4">
+                            <div class="checkbox">
+                                @Html.CheckBox("quest_6", Convert.ToBoolean(Model.mchat_monitor_quest_7.quest6), new { @class = "form-control switch", @data_on_text = "Si", @data_off_text = "No" })
+                                @Html.ValidationMessageFor(model => model.mchat_monitor_quest_7.quest6, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>@*-----   Que hace ... para dirigir su atencion   -----*@
+
+                    <div class="form-group" id="divQuest7" style="display:none;">
+                        <label class="control-label col-md-8">
+                            ¿Haría esto para mostrar su interés, y no para pedir ayuda?
+                        </label>
+                        <div class="col-md-4">
+                            <div class="checkbox">
+                                @Html.CheckBox("quest_7", Convert.ToBoolean(Model.mchat_monitor_quest_7.quest7), new { @class = "form-control switch", @data_on_text = "Si", @data_off_text = "No" })
+                                @Html.ValidationMessageFor(model => model.mchat_monitor_quest_7.quest7, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>@*-----   Que hace ... para dirigir su atencion   -----*@
+                    <hr />
+                    <div class="form-group" id="dt7_ObservacionFinal" style="display: none;">
+                        <label class="control-label col-md-12">
+                            Sí O lo haría para mostrar interés y también pedir ayuda
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-8">
+                            Resultado de la Prueba:
+                        </label>
+                        <div class="col-md-4">
+                            <label class="control-label col-md-8" id="lblResultado">
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+                }
+            </div>
+            <div class="col-md-6">
+                <img src="@Url.Content("~/Content/images/quest7.png")" alt="img_quest7" />
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="form-group">
+            <div class="col-md-12">
+                <button id="btndtq7Save" type="submit" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var $dt7_quest1 = $('#FrmQuest7 #quest_1');
+    var $dt7_quest2 = $('#FrmQuest7 #quest_2');
+    var $dt7_quest3 = $('#FrmQuest7 #quest_3');
+    var $dt7_quest4 = $('#FrmQuest7 #quest_4');
+    var $dt7_quest5 = $('#FrmQuest7 #quest_5');
+    var $dt7_quest6 = $('#FrmQuest7 #quest_6');
+    var $dt7_quest7 = $('#FrmQuest7 #quest_7');
+    var $divQuest6 = $('#FrmQuest7 #divQuest6');
+    var $divQuest7 = $('#FrmQuest7 #divQuest7');
+
+
+    var $dt7_Observacion = $('#FrmQuest7 #dt7_Observacion');
+    var $dt7_ObservacionFinal = $('#FrmQuest7 #dt7_ObservacionFinal')
+    var $dt7_Resultado = $('#FrmQuest7 #lblResultado');
+
+    function muestraCampos() {
+        if ($dt7_quest1.is(':checked')) {
+            $dt7_Observacion.show();
+            $('.cuestionario').show();
+        } else {
+            $dt7_Observacion.hide();
+            $('.cuestionario').hide();
+        }
+
+        if (ValorAlgoInteresantes() < 4) {
+            $divQuest6.show();
+        } else {
+            $divQuest6.hide();
+        }
+
+        if ($dt7_quest6.is(':checked')) {
+            $divQuest7.show();
+        } else {
+            $divQuest7.hide();
+        }
+
+        if ($dt7_quest7.is(':checked')) {
+            $dt7_ObservacionFinal.show();
+        } else {
+            $dt7_ObservacionFinal.hide();
+        }
+
+        validaResultado();
+    }
+
+    validaResultado();
+
+    $(function () {
+        $('div.bootstrap-switch-container > span').click(function () {
+            muestraCampos();
+            
+        });
+
+     
+    });
+
+
+    function validaResultado() {
+
+        if (ValorAlgoInteresantes() == 4) {
+            resultado("Falla");
+        } else {
+            if (!$dt7_quest6.is(':checked')) {
+                resultado("Falla");
+            } else {
+                if (!$dt7_quest7.is(':checked')) {
+                    resultado("Falla");
+                } else {
+                    resultado("Pasa");
+                }
+            }
+        }
+
+    }
+
+    function resultado(valor) {
+        $dt7_Resultado.empty();
+        $dt7_Resultado.append(valor);
+    }
+
+    function ValorAlgoInteresantes() {
+        var nFalla = 0;
+
+        if (!$dt7_quest2.is(':checked')) nFalla++;
+        if (!$dt7_quest3.is(':checked')) nFalla++;
+        if (!$dt7_quest4.is(':checked')) nFalla++;
+        if (!$dt7_quest5.is(':checked')) nFalla++;
+
+        return nFalla;
+
+    }
+
+    $("#btndtq7Save").click(function (e) {
+
+        e.preventDefault();
+
+        var form = $("#FrmQuest6");
+
+        var _pasa;
+        if ($dt7_Resultado.text().toLowerCase() == "pasa") {
+            _pasa = true;
+        } else { _pasa = false; } 
+
+        var q6datos = {
+            estudioId: $("#estudio_id").val(),
+            quest1: $dt6_quest1.is(":checked"),
+            quest2: $dt6_quest2.is(":checked"),
+            quest3: $dt6_quest3.is(":checked"),
+            quest4: $dt6_quest4.is(":checked"),
+            quest5: $dt6_quest5.is(":checked"),
+            quest6: $dt6_quest6.is(":checked"),
+            quest7: $dt6_quest7.is(":checked"),
+            pasa: _pasa
+        };
+
+        $.ajax({
+            url: form.attr("action"),
+            method: form.attr("method"),
+            data: q6datos
+        });
+
+    });
+
+</script>

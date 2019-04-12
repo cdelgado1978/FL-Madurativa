@@ -1,0 +1,128 @@
+﻿
+@model madurativas.db.estudio
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2>Supervisión de la salud infantil.</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Vigilancia de pautas madurativas y diagnóstico oportuno de autismo.</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group">
+                @Html.Label("Nombre Paciente", htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.DropDownList("pacienteid", (IEnumerable<SelectListItem>)ViewBag.Pacientes, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.pacienteid, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Fecha Nacimiento", htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.Paciente.fechaNacimiento, new { htmlAttributes = new { @class = "form-control", @type = "date", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.Paciente.fechaNacimiento, "", new { @class = "text-danger" })
+
+                    @Html.Label("Edad: ")
+                    @Html.Label("edad", htmlAttributes: new { id = "edad" })
+
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.Label("Fecha de Estudio", htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.fechaestudio, new { htmlAttributes = new { @class = "form-control", @type = "date", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.fechaestudio, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @*<div class="form-group">
+                    @Html.LabelFor(model => model.digitado, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.digitado, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.digitado, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+
+            <div class="form-group">
+                <div class="col-md-offset-4 col-md-8">
+                    <input type="submit" value="Aceptar" class="orangeButton col-md-3" />
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="row">
+        <hr />
+        <p class="form-horizontal" align="justify" style="background-color:#CFF0FF; padding:0.8%;margin:2%; width:96%; color:#8e8e8e">
+            El Comité de la Infancia de la Academia Americana de Pediatría (AAP) recomienda que las visitas de supervisión de la salud antes de los 5 años incluyan la vigilancia del desarrollo estructurada y sistemática, con el uso de herramientas estandarizadas para realizar un cribado del desarrollo, al menos, en tres edades (9, 18 y 24 o 30 meses) y, adicionalmente, administrar pruebas de detección de autismo a los 18 y 36 meses.  Se basan en diversos estudios que han demostrado que el juicio clínico del pediatra no es suficiente para identificar retrasos en el control del salud, puesto que no logra detectar para la intervención temprana menos del 30-50% de los déficits en el desarrollo psicomotor. Cuestionario ASQ-3
+        </p>
+    </div>
+
+    <h5 align="center" style="width:100%; background-color: #606060; color:white; margin-top:3%; padding:0.5%;">
+        <p style="margin: auto 0;">Este aplicativo <strong>No es una prueba diagnóstica</strong>.</p>
+    </h5>
+
+</div>
+}
+@section scripts
+{
+    <script src="~/Scripts/moment.js"></script>
+    <script>
+
+        $(function () {
+
+            var url = window.location + "/Pacientes/getFechaNacimientoPaciente/" + $("#pacienteid").val();
+
+            var paciente = $('#pacienteid').find(":selected").val();
+            localStorage.setItem("pacienteid", paciente);
+
+            $.get(url, null, function (response) {
+                $("#Paciente_fechaNacimiento").val(response);
+                var dob = new Date(response);
+                var today = new Date();
+                var age = ((today - dob) / (365.25 * 24 * 60 * 60 * 1000)).toFixed(1);;
+                $('#edad').html(age + ' años');
+                $('#fechaestudio').val(today);
+                $('#fechaestudio').val(moment().format('YYYY-MM-DD'));
+
+            });
+
+            $("#pacienteid").change(function () {
+
+                var url = window.location + "/Pacientes/getFechaNacimientoPaciente/" + $("#pacienteid").val();
+
+                var paciente = $('#pacienteid').find(":selected").val();
+                localStorage.setItem("pacienteid", paciente);
+
+                $.get(url, null, function (response) {
+                    $("#Paciente_fechaNacimiento").val(response);
+                    var dob = new Date(response);
+                    var today = new Date();
+                    var age = ((today - dob) / (365.25 * 24 * 60 * 60 * 1000)).toFixed(1);
+                    $('#edad').html(age + ' años');
+
+                });
+
+            });
+
+
+        })
+    </script>
+
+
+
+}

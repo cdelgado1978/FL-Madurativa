@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Pautas Madurativas</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top AutisBackground">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("Pautas Madurativas", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        </div>
+        <div class="navbar-collapse collapse menu">
+            <ul class="nav navbar-nav">
+                @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
+                <li>@Html.ActionLink("Estudios", "EstudioDelDia", "Home")</li>
+                <li>@Html.ActionLink("Pacientes", "Index", "Pacientes")</li>
+            </ul>
+            @*@Html.Partial("_LoginPartial")*@
+        </div>
+    </div>
+</div>
+<div class="container body-content">
+    @RenderBody()
+    <hr />
+    <footer>
+        
+    </footer>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/Scripts/bootstrap-switch.min.js"></script>
+
+@RenderSection("scripts", required: false)
+
+
+@*<h5 class="footer AutisBackground" style="width:100%; background-color: #606060; color:white; margin-top:3%; padding:0.5%;">
+    <p style="margin: auto 0;">Este aplicativo <strong>No es una prueba diagnóstica</strong>.</p> 
+</h5>*@
+</body>
+
+</html>
